@@ -1,7 +1,7 @@
 View the [live site](https://tapbeat.herokuapp.com).
 
 # TapBeat
-DannyDash is an sound and animation project. Hit any key to get started!
+DannyDash is a sound and animation project. Hit any key to get started!
 <br/>
 It was implemented using the following technologies:
 
@@ -29,7 +29,7 @@ It was implemented using the following technologies:
   text.justification = 'center';
   text.fillColor = 'white';
   text.fontSize = '4vw';
-  text.content = 'Press some keys on your keyboard to get Funky!';
+  text.content = 'Press some keys on your keyboard to make some beats!';
 
   var keyData = {
         q: {
