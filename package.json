@@ -20,6 +20,6 @@
     "start": "node app.js --12.16.3",
     "start:dev": "webpack-dev-server --port $PORT --host 0.0.0.0 "
   },
-  "author": "Bryndon",
+  "author": "Danny",
   "license": "ISC"
 }

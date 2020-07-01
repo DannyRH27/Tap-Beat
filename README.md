@@ -7,263 +7,219 @@ It was implemented using the following technologies:
 
 + **Frontend**: Javascript, Paper.js
 + **Backend**: Node.js, Express.js
-+ **Others**: Howerl.js
++ **Others**: Howler.js
 
-## Table of Contents
-+ [Logistics Dispatch System](https://github.com/DannyRH27/DannyDash#logistics-dispatch-system)
-+ [Facebook Omni-Authorization](https://github.com/DannyRH27/DannyDash/#facebook-omni-authorization)
-+ [Dynamic Search](https://github.com/DannyRH27/DannyDash/#dynamic-search)
-
-## Logistics Dispatch System
+## Demo
 <img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/Dispatch.png" width="1000">
 
-The Logistics Dispatch System is implemented using Google's Geocoding, Distance Matrix, and Maps Javascript APIs. <br/><br/>
-First, the Geocoding API will take the current user's address and the destination store address and return latitude/longitude coordinates for both. <br/><br/>
-Next, the store coordinates are set as the origin and the user's coordinates are set as the destination in the Distance Matric API inputs and will return, duration and distance. <br/><br/>
-Finally, the Maps Javascript API will initialize an instance of Google Maps and use the coordinates to create two markers on the map. ETA will be calculated by manipulating the returned duration and incrementing it with a DateTime Object.
+## Code
 ```
-  calculateDispatchDistance(order) {
-    const { updateOrder } = this.props;
-    function callback(response, status) {
-      if (status == "OK") {
-        var origins = response.originAddresses;
-        var destinations = response.destinationAddresses;
+<script type="text/paperscript" canvas="myCanvas">
 
-        for (var i = 0; i < origins.length; i++) {
-          var results = response.rows[i].elements;
-          for (var j = 0; j < results.length; j++) {
-            var element = results[j];
-            var distance = element.distance.text;
-            var durationText = element.duration.text;
-            var duration = element.duration.value;
-            var from = origins[i];
-            var to = destinations[j];
-          }
+  var canvas = document.getElementById("myCanvas");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.onresize = function(){ location.reload(); }
+
+  if(window.innerWidth < 425) {prompt("Some mobile users may be unable to use this app \n sorry :\(")}
+
+  var text = new PointText(new Point(canvas.width/2, canvas.height/2));
+  text.justification = 'center';
+  text.fillColor = 'white';
+  text.fontSize = '4vw';
+  text.content = 'Press some keys on your keyboard to get Funky!';
+
+  var keyData = {
+        q: {
+            sound: new Howl({
+              src: ['../sounds/bubbles.mp3']
+            }),
+            color: '#1abc9c'
+        },
+        w: {
+            sound: new Howl({
+              src: ['../sounds/clay.mp3']
+            }),
+            color: '#2ecc71'
+        },
+        e: {
+            sound: new Howl({
+              src: ['../sounds/confetti.mp3']
+            }),
+            color: '#3498db'
+        },
+        r: {
+            sound: new Howl({
+              src: ['../sounds/corona.mp3']
+            }),
+            color: '#9b59b6'
+        },
+            t: {
+            sound: new Howl({
+              src: ['../sounds/dotted-spiral.mp3']
+            }),
+            color: '#34495e'
+        },
+        y: {
+            sound: new Howl({
+              src: ['../sounds/flash-1.mp3']
+            }),
+            color: '#16a085'
+        },
+        u: {
+            sound: new Howl({
+              src: ['../sounds/flash-2.mp3']
+            }),
+            color: '#27ae60'
+        },
+        i: {
+            sound: new Howl({
+              src: ['../sounds/flash-3.mp3']
+            }),
+            color: '#2980b9'
+        },
+        o: {
+            sound: new Howl({
+                src: ['../sounds/glimmer.mp3']
+            }),
+            color: '#8e44ad'
+        },
+        p: {
+            sound: new Howl({
+              src: ['../sounds/moon.mp3']
+            }),
+            color: '#2c3e50'
+        },
+        a: {
+            sound: new Howl({
+              src: ['../sounds/pinwheel.mp3']
+            }),
+            color: '#f1c40f'
+        },
+        s: {
+            sound: new Howl({
+              src: ['../sounds/piston-1.mp3']
+            }),
+            color: '#e67e22'
+        },
+            d: {
+            sound: new Howl({
+              src: ['../sounds/piston-2.mp3']
+            }),
+            color: '#e74c3c'
+        },
+        f: {
+            sound: new Howl({
+              src: ['../sounds/prism-1.mp3']
+            }),
+            color: '#95a5a6'
+        },
+        g: {
+            sound: new Howl({
+              src: ['../sounds/prism-2.mp3']
+            }),
+            color: '#f39c12'
+        },
+        h: {
+            sound: new Howl({
+              src: ['../sounds/prism-3.mp3']
+            }),
+            color: '#d35400'
+        },
+        j: {
+            sound: new Howl({
+              src: ['../sounds/splits.mp3']
+            }),
+            color: '#1abc9c'
+        },
+        k: {
+            sound: new Howl({
+              src: ['../sounds/squiggle.mp3']
+            }),
+            color: '#2ecc71'
+        },
+        l: {
+            sound: new Howl({
+              src: ['../sounds/strike.mp3']
+            }),
+            color: '#3498db'
+        },
+        z: {
+            sound: new Howl({
+              src: ['../sounds/suspension.mp3']
+            }),
+            color: '#9b59b6'
+        },
+        x: {
+            sound: new Howl({
+              src: ['../sounds/timer.mp3']
+            }),
+            color: '#34495e'
+        },
+        c: {
+            sound: new Howl({
+              src: ['../sounds/ufo.mp3']
+            }),
+            color: '#16a085'
+        },
+        v: {
+            sound: new Howl({
+              src: ['../sounds/veil.mp3']
+            }),
+            color: '#27ae60'
+        },
+        b: {
+            sound: new Howl({
+              src: ['../sounds/wipe.mp3']
+            }),
+            color: '#2980b9'
+        },
+        n: {
+            sound: new Howl({
+                src: ['../sounds/zig-zag.mp3']
+            }),
+            color: '#8e44ad'
+        },
+        m: {
+            sound: new Howl({
+              src: ['../sounds/moon.mp3']
+            }),
+            color: '#2c3e50'
         }
-        var date = new Date(order.createdAt);
-        date.setMinutes(date.getMinutes() + duration / 60);
-        var minutes = date.getMinutes();
-        var hours = date.getHours();
-        var ampm = hours >= 12 ? "pm" : "am";
-        hours = hours % 12;
-        hours = hours ? hours : 12; // the hour '0' should be '12'
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        var strTime = hours + ":" + minutes + " " + ampm;
-        if (order.deliveryEta === null) {
-          const newOrder = Object.assign({}, order)
-          newOrder.deliveryEta = strTime
-          newOrder.deliveredDate = date
-          updateOrder(newOrder)
-        }
-        
-
-        this.setState({ duration: duration });
-        this.setState({ ETA: strTime });
-        this.setState({ durationText: durationText });
-        this.setState({ distance: distance });
-        this.setState({ deliveryDate: date })
-        this.initMap(order);
-
-      }
     }
-    const { currentUser } = this.props;
-    var origin1 = order.store.address;
-    var destinationA = currentUser.address;
 
-    var service = new google.maps.DistanceMatrixService();
-    service.getDistanceMatrix(
-      {
-        origins: [origin1],
-        destinations: [destinationA],
-        travelMode: "WALKING",
-        unitSystem: google.maps.UnitSystem.IMPERIAL,
-      },
-      callback.bind(this)
-    );
-  }
 
-  initMap(order) {
-    const { currentUser } = this.props;
-    var location = { lat: 37.75383, lng: -122.401772 };
-    var map = new google.maps.Map(document.getElementById("order-map"), {
-      zoom: 15,
-      center: location,
-    });
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: currentUser.address }, function (
-      results,
-      status
-    ) {
-      var homeMark = <img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/Home.png" alt=""/>
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-        map: map,
-        position: results[0].geometry.location,
-      });
-      this.setState({address: results[0].formatted_address})
-    // }
-    }.bind(this))
+    var circles = [];
 
-    geocoder.geocode({ address: order.store.address }, function (
-      results,
-      status
-    ) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        var storeMark = <img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/Store.png" alt=""/>
-        var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location,
-        });
-      }
-    }.bind(this))
-  }
-```
-## Facebook Omni-Authorization
-<p align="center">
-  <img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/FBLogin.png" width="1000">
-</p>
-<p align="center">
-  <img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/FBPermission2.png" width="500">
-</p>
-DannyDash allows you to sign in or signup for a user account using your Facebook credentials.
-<br>
+    function onKeyDown(event) {
+        if(keyData[event.key]) {
+          var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPoint = Point.random();
+            var point = maxPoint * randomPoint;
+            var newCircle = new Path.Circle(new Point(point), 500);
+            newCircle.fillColor = keyData[event.key].color;
+            keyData[event.key].sound.play();
+            circles.push(newCircle);
+            text.content = " ";
+        }
+    }
 
-Omni-Authorization is achieved through Facebook Login API. <br/><br/>
-When the 'Continue with Facebook' button is hit, an API call is made to the backend OmniAuth Callbacks Controller's Facebook route and an async script initializes an instance of the Facebook app with your Facebook API key in order to request user information.<br/><br/>
-After the user inserts their credentials, we will be redirected back to the Omniauth Callback Controller where the information from the request is available as a hash at request.env["omniauth.auth"] and proceeds to generate a user with the information provided. <br/><br/>
-If successfully validated through the user model, the user will be created and redirected to the home page. On failure, the account will not be created and the user will be redirected back to the splash page.
-<br/>
-<br/>
-Async FB API Call
-```
-<script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '175499983639989',
-          cookie     : true,
-          xfbml      : true,
-          version    : 'v6.0'
-        });
-          
-        FB.AppEvents.logPageView();   
-          
-      };
+    function onFrame(event){
+        for(var i=0; i < circles.length; i++){
+            circles[i].fillColor.hue += 1;
+            circles[i].scale(.9);
+            if(circles[i].area < 1){
+                circles[i].remove();
 
-  (function(d, s, id){
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+                circles.splice(i, 1);
+
+                console.log(circles);
+            }
+        }
+    }
 </script>
-
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=175499983639989&autoLogAppEvents=1"></script>
-```
-<br/>
-Omni-Authorization Callback Controller Facebook Route
-<br/>
-<br/>
-
-```
-def facebook
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
-    if @user.persisted?
-        login!(@user)
-        redirect_to "#/home"
-        @cart = @user.cart || Cart.create(customer_id: @user.id)
-        sign_in @user, event: :authentication
-        set_flash_message(:notice, :success, kind: "Facebook") if is_navigational_format?
-    else
-        session["devise.facebook_data"] = request.env["omniauth.auth"]
-        redirect_to new_user_registration_url
-    end
-
-end
-
-def failure
-    redirect_to root_path
-end
-```
-<br/>
-User Model
-<br/>
-<br/>
-
-```
-def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-          user.email = data["email"] if user.email.blank?
-      end
-    end
-end
-
-def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0, 20]
-    user.pass_digest = BCrypt::Password.create(user.password)
-    user.name = auth.info.name   # assuming the user model has a name
-    user.image = auth.info.image # assuming the user model has an image
-    user.fname = auth.info.name.split[0]
-    user.lname = auth.info.name.split[-1]
-    # If you are using confirmable and the provider(s) you use validate emails, 
-    # uncomment the line below to skip the confirmation emails.
-    # user.skip_confirmation!
-    end
-end
-
-validates :email, presence: true, uniqueness: true
-validates :fname, :lname, presence: true
-validates :password, length: { minimum: 6, allow_nil: true }
-validates :pass_digest, presence: true
-validates :password, length: { minimum: 6, allow_nil: true }
-validates :session_token, presence: true, uniqueness: true
-validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-
-```
-
-## Dynamic Search
-<p align="center">
-  <img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/SearchDropdown2.png" width=300>
-</p>
-<p align="center">
-  <img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/SearchIndex.png" width=1000>
-</p>
-Search stores for quick navigation! See the first five stores that match, or view all results! <br/>
-Search is implemented using query strings taken from the URL to scan the database for queries.
-<br/>
-<br/>
-AJAX Call
-<br/>
-
-```
-search(fragment) {
-  $.ajax({
-    method: "GET",
-    url: `/api/stores/search/`,
-    data: { fragment: fragment },
-  }).then((res) => {
-    this.setState({ searchResults: res });
-  });
-}
-```
-
-<br/>
-Store Controller Search Route
-<br/>
-
-```
-
-def search
-  fragment = params[:fragment]
-  @stores = Store.where("name ilike ?", "%#{fragment}%")
-  render :search
-end
-
 ```
 
 ## Contact
