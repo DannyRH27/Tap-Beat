@@ -10,7 +10,7 @@ It was implemented using the following technologies:
 + **Others**: Howler.js
 
 ## Demo
-<img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/Tappy.gif" width="1000">
+<img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/Tappybeats.gif" width="1000">
 
 ## Code
 ```
@@ -29,7 +29,7 @@ It was implemented using the following technologies:
   text.justification = 'center';
   text.fillColor = 'white';
   text.fontSize = '4vw';
-  text.content = 'Press some keys on your keyboard to make some beats!';
+  text.content = 'Tap some keys on your keyboard to make some beats!';
 
   var keyData = {
         q: {

@@ -4,7 +4,7 @@ var canvas = document.getElementById("myCanvas");
     text.justification = 'center';
     text.fillColor = 'white';
     text.fontSize = '4vw';
-    text.content = 'Press some keys on your keyboard to make some beats!';
+    text.content = "Tap some keys on your keyboard to make some beats!";
 
     var keyData = {
         q: {
