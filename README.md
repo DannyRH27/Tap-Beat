@@ -10,7 +10,7 @@ It was implemented using the following technologies:
 + **Others**: Howler.js
 
 ## Demo
-<img src="demo/tappy.gif" width="1000">
+<img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/Tappy.gif" width="1000">
 
 ## Code
 ```
