@@ -1,7 +1,7 @@
 View the [live site](https://tapbeat.herokuapp.com).
 
 # TapBeat
-DannyDash is an sound and animation project inspired by [Patatap](https://patatap.com)!
+DannyDash is an sound and animation project. Hit any key to get started!
 <br/>
 It was implemented using the following technologies:
 
@@ -10,7 +10,7 @@ It was implemented using the following technologies:
 + **Others**: Howler.js
 
 ## Demo
-<img src="https://dannydash-seeds.s3-us-west-1.amazonaws.com/ReadMe/Dispatch.png" width="1000">
+<img src="demo/tappy.gif" width="1000">
 
 ## Code
 ```
