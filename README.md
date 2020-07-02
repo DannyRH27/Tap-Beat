@@ -1,7 +1,7 @@
 View the [live site](https://tapbeat.herokuapp.com).
 
 # TapBeat
-DannyDash is a sound and animation project. Hit any key to get started!
+DannyDash is a frontend sound and animation project. Hit any key to get started!
 <br/>
 It was implemented using the following technologies:
 
