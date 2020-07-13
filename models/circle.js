@@ -190,7 +190,6 @@ var canvas = document.getElementById("myCanvas");
                 
                 circles.splice(i, 1);
 
-                console.log(circles);
             }
         }
     }

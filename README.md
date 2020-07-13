@@ -215,7 +215,6 @@ It was implemented using the following technologies:
 
                 circles.splice(i, 1);
 
-                console.log(circles);
             }
         }
     }
